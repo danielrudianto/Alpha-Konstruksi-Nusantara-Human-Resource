@@ -1,0 +1,30 @@
+{
+  "name": "alpha-konstruksi-nusantara-human-resource-testing-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.29.4",
+    "mongoose": "^7.5.0",
+    "nodemailer": "^6.9.5"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/moment": "^2.13.0",
+    "@types/mongoose": "^5.11.97",
+    "@types/nodemailer": "^6.4.9",
+    "nodemon": "^3.0.1"
+  }
+}
