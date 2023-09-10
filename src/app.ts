@@ -1,6 +1,7 @@
 import express from "express";
 import { connect } from "mongoose";
 import { config } from "dotenv";
+import cors from "cors";
 
 import tokenRoutes from "./routes/token.routes";
 import curriculumRoutes from "./routes/curriculum.routes";
@@ -9,6 +10,7 @@ import testRoutes from "./routes/test.routes";
 config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
