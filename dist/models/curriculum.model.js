@@ -41,7 +41,7 @@ const CertificationSchema = new mongoose_1.Schema({
         required: false,
     },
 });
-const CurriculumSchema = new mongoose_1.Schema({
+const educationSchema = new mongoose_1.Schema({
     school: {
         type: String,
         required: true,
@@ -66,6 +66,31 @@ const CurriculumSchema = new mongoose_1.Schema({
         type: String,
         required: false,
     },
+});
+const CurriculumSchema = new mongoose_1.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    dateOfBirth: {
+        type: Date,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    phoneNumber: {
+        type: String,
+        required: false,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    education: {
+        type: educationSchema,
+    },
     expiriences: {
         type: [ExpirienceSchema],
         required: false,
@@ -75,6 +100,12 @@ const CurriculumSchema = new mongoose_1.Schema({
         type: [CertificationSchema],
         required: false,
         default: [],
+    },
+    token: {
+        type: String,
+        required: true,
+        unique: true,
+        ref: "tokens.token",
     },
 });
 const CurriculumModel = (0, mongoose_1.model)("curriculums", CurriculumSchema);

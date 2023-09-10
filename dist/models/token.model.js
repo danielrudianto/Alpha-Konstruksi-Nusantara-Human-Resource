@@ -4,7 +4,13 @@ const mongoose_1 = require("mongoose");
 const TokenStatusSchema = new mongoose_1.Schema({
     status: {
         type: String,
-        enum: ["published", "meta submitted", "cv submitted", "test submitted"],
+        enum: [
+            "published",
+            "logged in",
+            "meta submitted",
+            "cv submitted",
+            "test submitted",
+        ],
         default: "published",
     },
     createdAt: {
@@ -30,6 +36,16 @@ const TokenSchema = new mongoose_1.Schema({
     status: {
         type: [TokenStatusSchema],
         default: [],
+    },
+    currentStatus: {
+        type: String,
+        enum: [
+            "published",
+            "logged in",
+            "meta submitted",
+            "cv submitted",
+            "test submitted",
+        ],
     },
 });
 const TokenModel = (0, mongoose_1.model)("tokens", TokenSchema);
