@@ -13,7 +13,7 @@ const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
-app.use(express_1.default.json());
+app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/token", token_routes_1.default);
 app.use("/curriculum", curriculum_routes_1.default);

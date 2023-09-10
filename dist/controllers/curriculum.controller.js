@@ -46,7 +46,12 @@ CurriculumController.create = (req, res) => __awaiter(void 0, void 0, void 0, fu
             });
             // Set expiry date to 1 hour from now
             testToken.expiredAt = new Date(Date.now() + 60 * 60 * 1000);
-            yield testToken.save();
+            try {
+                yield testToken.save();
+            }
+            catch (error) {
+                console.log(error);
+            }
             return res.status(201).send(result);
         }))
             .catch((error) => {

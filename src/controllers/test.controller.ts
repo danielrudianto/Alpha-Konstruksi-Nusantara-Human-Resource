@@ -259,7 +259,8 @@ class TestController {
             id: "p6pplzdiqlp4z0di6yv6vwk7",
             question:
               "Gambarkan denah tiang bor termasuk penomoran tiang dan detail tiang bor dengan ketentuan 10 pile cap berisi 4 tiang bor sejarak 2.5xDiameter. Diketahui ukuran lahan pekerjaan adalah 5 x 20 m2. Muka tanah asli @1.000.Tebal pile cap 600 mm dengan panjang efektif tiang bor 12.000 mm. Diameter tiang bor 600 mm dengan konfigurasi besi 8D16, D13-150. Kode tiang selalu diawali dengan BP.",
-            notes: "Mohon dikerjakan dengan menggunakan software AutoCAD.",
+            notes:
+              "Mohon dikerjakan dengan menggunakan software AutoCAD. File maximum yang dapat dikirimkan adalah sebesar 5 MB.",
             type: "drawing",
           },
         ],
