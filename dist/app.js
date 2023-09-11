@@ -12,7 +12,7 @@ const curriculum_routes_1 = __importDefault(require("./routes/curriculum.routes"
 const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-const allowedOrigins = ["https://hrd.alphakonstruksi.id"]; // Add your frontend domains here
+const allowedOrigins = ["*"];
 const corsOptions = {
     origin: (origin, callback) => {
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {

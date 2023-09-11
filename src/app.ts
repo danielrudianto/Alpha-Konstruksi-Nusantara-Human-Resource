@@ -11,7 +11,7 @@ config();
 
 const app = express();
 
-const allowedOrigins = ["https://hrd.alphakonstruksi.id"]; // Add your frontend domains here
+const allowedOrigins = ["*"];
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
