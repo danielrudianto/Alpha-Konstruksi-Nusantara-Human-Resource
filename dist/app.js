@@ -13,11 +13,7 @@ const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: [
-        "http://localhost:4200",
-        "https://hrd.alphakonstruksi.id",
-        "https://hrd.alphakonstruksi.id:4200",
-    ],
+    origin: "*",
     optionsSuccessStatus: 200,
 };
 app.use((0, cors_1.default)(corsOptions));

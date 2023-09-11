@@ -12,11 +12,7 @@ config();
 const app = express();
 
 const corsOptions: cors.CorsOptions = {
-  origin: [
-    "http://localhost:4200",
-    "https://hrd.alphakonstruksi.id",
-    "https://hrd.alphakonstruksi.id:4200",
-  ],
+  origin: "*",
   optionsSuccessStatus: 200,
 };
 
