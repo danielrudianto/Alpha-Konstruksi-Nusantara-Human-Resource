@@ -12,23 +12,15 @@ config();
 const app = express();
 app.use(
   cors({
-    origin: ["https://hrd.alphakonstruksi.id", "http://127.0.0.1"],
+    origin: [
+      "https://hrd.alphakonstruksi.id",
+      "http://hrd.alphakonstruksi.id",
+      "http://127.0.0.1",
+    ],
   })
 );
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://hrd.alphakonstruksi.id"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  next();
-});
 
 app.use("/token", tokenRoutes);
 app.use("/curriculum", curriculumRoutes);
