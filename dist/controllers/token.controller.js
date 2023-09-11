@@ -54,8 +54,6 @@ TokenController.check = (req, res) => {
         }, process.env.JWT_SECRET, {
             expiresIn: "2h",
         });
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         return res.status(200).send({
             token: jwt,
             submittedCV: submittedCV ? true : false,
