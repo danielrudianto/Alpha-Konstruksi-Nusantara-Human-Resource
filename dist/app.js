@@ -12,13 +12,19 @@ const curriculum_routes_1 = __importDefault(require("./routes/curriculum.routes"
 const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    origin: [
-        "https://hrd.alphakonstruksi.id",
-        "http://hrd.alphakonstruksi.id",
-        "http://127.0.0.1",
-    ],
-}));
+const allowedOrigins = ["https://hrd.alphakonstruksi.id"]; // Add your frontend domains here
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+};
+app.use((0, cors_1.default)(corsOptions));
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/token", token_routes_1.default);
