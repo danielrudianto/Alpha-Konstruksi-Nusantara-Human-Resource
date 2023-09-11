@@ -50,18 +50,15 @@ class TokenController {
         }
       );
 
-      return res
-        .set({
-          "Access-Control-Expose-Headers": "token",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        })
-        .status(200)
-        .send({
-          token: jwt,
-          submittedCV: submittedCV ? true : false,
-          submittedTest: submittedTest ? true : false,
-        });
+      res.append("Access-Control-Allow-Origin", ["*"]);
+      res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+      res.append("Access-Control-Allow-Headers", "Content-Type");
+
+      return res.status(200).send({
+        token: jwt,
+        submittedCV: submittedCV ? true : false,
+        submittedTest: submittedTest ? true : false,
+      });
     });
   };
 }
