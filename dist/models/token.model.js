@@ -47,6 +47,10 @@ const TokenSchema = new mongoose_1.Schema({
             "test submitted",
         ],
     },
+    testName: {
+        type: String,
+        required: true,
+    },
 });
 const TokenModel = (0, mongoose_1.model)("tokens", TokenSchema);
 exports.default = TokenModel;

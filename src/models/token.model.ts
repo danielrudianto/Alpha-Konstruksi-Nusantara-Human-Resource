@@ -47,6 +47,10 @@ const TokenSchema = new Schema({
       "test submitted",
     ],
   },
+  testName: {
+    type: String,
+    required: true,
+  },
 });
 
 const TokenModel = model("tokens", TokenSchema);

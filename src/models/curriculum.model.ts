@@ -51,6 +51,10 @@ const educationSchema = new Schema({
     type: String,
     required: true,
   },
+  minor: {
+    type: String,
+    required: false,
+  },
   entry: {
     type: Number,
     required: true,
@@ -74,11 +78,19 @@ const CurriculumSchema = new Schema({
     type: String,
     required: true,
   },
+  nickName: {
+    type: String,
+    required: true,
+  },
   dateOfBirth: {
     type: Date,
     required: true,
   },
   address: {
+    type: String,
+    required: true,
+  },
+  city: {
     type: String,
     required: true,
   },
