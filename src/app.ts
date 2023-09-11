@@ -11,15 +11,13 @@ config();
 
 const app = express();
 
-const allowedOrigins = ["*"];
 const corsOptions: cors.CorsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: [
+    "http://localhost:4200",
+    "https://hrd.alphakonstruksi.id",
+    "https://hrd.alphakonstruksi.id:4200",
+  ],
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));

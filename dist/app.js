@@ -12,16 +12,13 @@ const curriculum_routes_1 = __importDefault(require("./routes/curriculum.routes"
 const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-const allowedOrigins = ["*"];
 const corsOptions = {
-    origin: (origin, callback) => {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: [
+        "http://localhost:4200",
+        "https://hrd.alphakonstruksi.id",
+        "https://hrd.alphakonstruksi.id:4200",
+    ],
+    optionsSuccessStatus: 200,
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use((0, cors_1.default)(corsOptions));
