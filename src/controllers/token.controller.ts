@@ -50,10 +50,6 @@ class TokenController {
         }
       );
 
-      res.append("Access-Control-Allow-Origin", ["*"]);
-      res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-      res.append("Access-Control-Allow-Headers", "Content-Type");
-
       return res.status(200).send({
         token: jwt,
         submittedCV: submittedCV ? true : false,
