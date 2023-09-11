@@ -12,7 +12,9 @@ const curriculum_routes_1 = __importDefault(require("./routes/curriculum.routes"
 const test_routes_1 = __importDefault(require("./routes/test.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: ["https://hrd.alphakonstruksi.id", "http://127.0.0.1"],
+}));
 app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((req, res, next) => {
