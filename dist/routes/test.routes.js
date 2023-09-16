@@ -8,5 +8,6 @@ const test_controller_1 = __importDefault(require("../controllers/test.controlle
 const authorization_middleware_1 = __importDefault(require("../utils/authorization.middleware"));
 const router = (0, express_1.Router)();
 router.get("/", authorization_middleware_1.default.intercept, test_controller_1.default.fetch);
-router.post("/", authorization_middleware_1.default.intercept, test_controller_1.default.create);
+router.post("/end", authorization_middleware_1.default.intercept, test_controller_1.default.end);
+router.post("/", authorization_middleware_1.default.intercept, test_controller_1.default.answer);
 exports.default = router;

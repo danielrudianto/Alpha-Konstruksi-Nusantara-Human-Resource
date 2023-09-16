@@ -33,8 +33,7 @@ class CurriculumController {
               status: "cv submitted",
               date: new Date(),
             });
-
-            // Set expiry date to 1 hour from now
+            testToken.currentStatus = "cv submitted";
             testToken.expiredAt = new Date(Date.now() + 60 * 60 * 1000);
 
             try {

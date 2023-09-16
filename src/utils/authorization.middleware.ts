@@ -31,14 +31,20 @@ class AuthorizationMiddleware {
     }).then((result) => {
       // Check if token is valid
       if (!result) {
-        return res.status(400).send({
+        return res.status(401).send({
           message: "Token not found.",
         });
       }
 
       if (result.expiredAt.getTime() < Date.now()) {
-        return res.status(400).send({
+        return res.status(401).send({
           message: "Token expired.",
+        });
+      }
+
+      if (result.currentStatus == "test submitted") {
+        return res.status(401).send({
+          message: "Test has been submitted.",
         });
       }
 

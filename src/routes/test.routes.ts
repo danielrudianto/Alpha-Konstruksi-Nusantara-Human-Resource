@@ -5,6 +5,7 @@ import AuthorizationMiddleware from "../utils/authorization.middleware";
 const router = Router();
 
 router.get("/", AuthorizationMiddleware.intercept, TestController.fetch);
-router.post("/", AuthorizationMiddleware.intercept, TestController.create);
+router.post("/end", AuthorizationMiddleware.intercept, TestController.end);
+router.post("/", AuthorizationMiddleware.intercept, TestController.answer);
 
 export default router;
