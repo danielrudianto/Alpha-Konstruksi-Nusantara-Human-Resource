@@ -116,6 +116,7 @@ class TestController {
         result.currentStatus = "test submitted";
 
         await result.save();
+        return res.status(201).send(result);
       })
       .catch((error) => {
         return res.status(500).send(error);
