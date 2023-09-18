@@ -177,20 +177,21 @@ class TestController {
       }).then((answers) => {
         return res.status(200).send({
           questions: test.map((x: any) => {
-            const answer = answers.find((y) => y.questionID === x.id);
+            const answer = answers.find((y) => y.questionID == x.id);
             return {
               id: x.id,
               question: x.question,
               answer: answer ? answer.answer : null,
-              files: answer
-                ? answer.files.map((x: any) => {
-                    return {
-                      id: x.id,
-                      name: x.name,
-                      size: x.size,
-                    };
-                  })
-                : [],
+              files:
+                answer && answer.files != null && answer.files.length > 0
+                  ? answer.files.map((x: any) => {
+                      return {
+                        id: x.id,
+                        name: x.name,
+                        size: x.size,
+                      };
+                    })
+                  : [],
               attachment: x.attachment,
               notes: x.notes,
               type: x.type,
