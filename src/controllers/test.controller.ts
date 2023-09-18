@@ -6,6 +6,7 @@ class TestController {
   static answer = (req: Request, res: Response) => {
     const questionID = req.body.questionID;
     const answer = req.body.answer;
+    const files = req.body.files || [];
     const token = req.body.token;
 
     TestModel.findOne({
@@ -26,12 +27,108 @@ class TestController {
             questionID: questionID,
           });
         } else {
-          result.answer = answer;
+          if (files && files.length > 0) {
+            result.files = files;
+            result.answer = answer;
+            result.submittedAt = new Date();
+            await result.save();
+
+            return res.status(201).send({
+              answer: answer,
+              questionID: questionID,
+            });
+          } else {
+            result.answer = answer;
+            result.submittedAt = new Date();
+            await result.save();
+
+            return res.status(201).send({
+              answer: answer,
+              questionID: questionID,
+            });
+          }
+        }
+      })
+      .catch((error) => {
+        console.error(`[error]: Error on submitting test answer: ${error}`);
+        return res.status(500).send(error);
+      });
+  };
+
+  static files = (req: Request, res: Response) => {
+    const questionID = req.body.questionID;
+    const files = req.body.files;
+    const token = req.body.token;
+
+    TestModel.findOne({
+      token: token,
+      questionID: questionID,
+    })
+      .then(async (result) => {
+        if (!result) {
+          await TestModel.create({
+            questionID: questionID,
+            files: files.map((x: any) => {
+              return {
+                name: x.name,
+                size: x.size,
+                data: x.data,
+              };
+            }),
+            answer: null,
+            token: token,
+            submittedAt: new Date(),
+          });
+
+          return res.status(201).send({
+            files: files.map((x: any) => {
+              return {
+                name: x.name,
+                size: x.size,
+              };
+            }),
+            answer: null,
+            questionID: questionID,
+          });
+        } else {
+          const existingFiles: any[] = [];
+          const newFiles: any[] = [];
+
+          for (let i = 0; i < files.length; i++) {
+            if (files[i].id == null) {
+              newFiles.push(files[i]);
+            } else {
+              existingFiles.push(files[i].id);
+            }
+          }
+
+          // Delete files
+          for (let i = 0; i < result.files.length; i++) {
+            if (!existingFiles.includes(result.files[i].id)) {
+              result.files.splice(i, 1);
+            }
+          }
+
+          for (let i = 0; i < newFiles.length; i++) {
+            result.files.push({
+              name: newFiles[i].name,
+              size: newFiles[i].size,
+              data: newFiles[i].data,
+            });
+          }
+
           result.submittedAt = new Date();
           await result.save();
 
           return res.status(201).send({
-            answer: answer,
+            files: result.files.map((x: any) => {
+              return {
+                id: x.id,
+                name: x.name,
+                size: x.size,
+              };
+            }),
+            answer: null,
             questionID: questionID,
           });
         }
@@ -85,6 +182,15 @@ class TestController {
               id: x.id,
               question: x.question,
               answer: answer ? answer.answer : null,
+              files: answer
+                ? answer.files.map((x: any) => {
+                    return {
+                      id: x.id,
+                      name: x.name,
+                      size: x.size,
+                    };
+                  })
+                : [],
               attachment: x.attachment,
               notes: x.notes,
               type: x.type,

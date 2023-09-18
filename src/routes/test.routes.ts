@@ -7,5 +7,6 @@ const router = Router();
 router.get("/", AuthorizationMiddleware.intercept, TestController.fetch);
 router.post("/end", AuthorizationMiddleware.intercept, TestController.end);
 router.post("/", AuthorizationMiddleware.intercept, TestController.answer);
+router.post("/files", AuthorizationMiddleware.intercept, TestController.files);
 
 export default router;

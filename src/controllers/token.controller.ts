@@ -35,8 +35,8 @@ class TokenController {
         token: token,
       });
 
-      const submittedTest = await TestModel.findOne({
-        token: token,
+      const submittedTest = result.status.find((status) => {
+        return status.status === "test submitted";
       });
 
       await result.save();
