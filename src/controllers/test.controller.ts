@@ -2,6 +2,12 @@ import { Request, Response } from "express";
 import TestModel from "../models/test.model";
 import TokenModel from "../models/token.model";
 
+interface uploadFile {
+  name: string;
+  data: string;
+  size: number;
+}
+
 class TestController {
   static answer = (req: Request, res: Response) => {
     const questionID = req.body.questionID;
@@ -66,7 +72,7 @@ class TestController {
     })
       .then(async (result) => {
         if (!result) {
-          await TestModel.create({
+          const createdTest = await TestModel.create({
             questionID: questionID,
             files: files.map((x: any) => {
               return {
@@ -81,8 +87,9 @@ class TestController {
           });
 
           return res.status(201).send({
-            files: files.map((x: any) => {
+            files: createdTest.files.map((x) => {
               return {
+                _id: x.id,
                 name: x.name,
                 size: x.size,
               };
@@ -91,45 +98,8 @@ class TestController {
             questionID: questionID,
           });
         } else {
-          const existingFiles: any[] = [];
-          const newFiles: any[] = [];
-
-          for (let i = 0; i < files.length; i++) {
-            if (files[i].id == null) {
-              newFiles.push(files[i]);
-            } else {
-              existingFiles.push(files[i].id);
-            }
-          }
-
-          // Delete files
-          for (let i = 0; i < result.files.length; i++) {
-            if (!existingFiles.includes(result.files[i].id)) {
-              result.files.splice(i, 1);
-            }
-          }
-
-          for (let i = 0; i < newFiles.length; i++) {
-            result.files.push({
-              name: newFiles[i].name,
-              size: newFiles[i].size,
-              data: newFiles[i].data,
-            });
-          }
-
-          result.submittedAt = new Date();
-          await result.save();
-
-          return res.status(201).send({
-            files: result.files.map((x: any) => {
-              return {
-                id: x.id,
-                name: x.name,
-                size: x.size,
-              };
-            }),
-            answer: null,
-            questionID: questionID,
+          return res.status(400).send({
+            message: "Files already submitted.",
           });
         }
       })

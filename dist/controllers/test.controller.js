@@ -77,7 +77,7 @@ TestController.files = (req, res) => {
     })
         .then((result) => __awaiter(void 0, void 0, void 0, function* () {
         if (!result) {
-            yield test_model_1.default.create({
+            const createdTest = yield test_model_1.default.create({
                 questionID: questionID,
                 files: files.map((x) => {
                     return {
@@ -91,8 +91,9 @@ TestController.files = (req, res) => {
                 submittedAt: new Date(),
             });
             return res.status(201).send({
-                files: files.map((x) => {
+                files: createdTest.files.map((x) => {
                     return {
+                        _id: x.id,
                         name: x.name,
                         size: x.size,
                     };
@@ -102,41 +103,8 @@ TestController.files = (req, res) => {
             });
         }
         else {
-            const existingFiles = [];
-            const newFiles = [];
-            for (let i = 0; i < files.length; i++) {
-                if (files[i].id == null) {
-                    newFiles.push(files[i]);
-                }
-                else {
-                    existingFiles.push(files[i].id);
-                }
-            }
-            // Delete files
-            for (let i = 0; i < result.files.length; i++) {
-                if (!existingFiles.includes(result.files[i].id)) {
-                    result.files.splice(i, 1);
-                }
-            }
-            for (let i = 0; i < newFiles.length; i++) {
-                result.files.push({
-                    name: newFiles[i].name,
-                    size: newFiles[i].size,
-                    data: newFiles[i].data,
-                });
-            }
-            result.submittedAt = new Date();
-            yield result.save();
-            return res.status(201).send({
-                files: result.files.map((x) => {
-                    return {
-                        id: x.id,
-                        name: x.name,
-                        size: x.size,
-                    };
-                }),
-                answer: null,
-                questionID: questionID,
+            return res.status(400).send({
+                message: "Files already submitted.",
             });
         }
     }))
