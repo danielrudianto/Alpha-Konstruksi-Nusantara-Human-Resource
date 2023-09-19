@@ -51,4 +51,21 @@ AuthorizationMiddleware.intercept = (req, res, next) => {
         next();
     });
 };
+AuthorizationMiddleware.interceptAdministrator = (req, res, next) => {
+    var _a;
+    const authorization = ((_a = req.headers["authorization"]) === null || _a === void 0 ? void 0 : _a.toString()) || "";
+    if (!authorization) {
+        return res.status(401).send({
+            message: "Token not found.",
+        });
+    }
+    const jwtToken = authorization.split(" ")[1];
+    if (!jwtToken) {
+        return res.status(401).send({
+            message: "Token not found.",
+        });
+    }
+    const payload = (0, jsonwebtoken_1.decode)(jwtToken);
+    console.log(payload);
+};
 exports.default = AuthorizationMiddleware;

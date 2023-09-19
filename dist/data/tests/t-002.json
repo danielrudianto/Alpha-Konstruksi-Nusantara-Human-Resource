@@ -7,24 +7,10 @@
         "type": "civil"
     },
     {
-        "id": "qgv1k47yg0s19n6r1km349su",
-        "question": "Anda diminta untuk membuat sebuah rangkaian besi dengan panjang 38 meter dan diameter 25mm, anda disediakan 4 buah batang besi yang masing – masing memilki panjang 12 meter. Jelaskan cara perhitungan dan nilai waste dari operasi teresebut.",
-        "notes": "Lakukan berdasarkan standar minimum dari SNI-03-2874-2002",
-        "attachment": "<table class='table'><thead><tr><th>Diameter (mm)</th><th>Berat (kg/m)</th></thead><tbody><tr><td>10</td><td>0.617</td></tr><tr><td>13</td><td>1.040</td></tr><tr><td>16</td><td>1.580</td></tr><tr><td>22</td><td>2.980</td></tr><tr><td>25</td><td>3.850</td></tr><tr><td>29</td><td>5.180</td></tr><tr><td>32</td><td>6.310</td></tr><tr><td>36</td><td>7.990</td></tr><tr><td>40</td><td>9.880</td></tr></tbody></table>",
-        "type": "civil"
-    },
-    {
         "id": "pzznwshfip1rx5b8uojrd5uf",
         "question": "Sebuah rangkaian besi penampang lingkaran berdiameter 1000 mm dan selimut beton 75 mm memiliki konfigurasi 10D22 dengan sengkang ø10-150 panjang 10 meter. Berapakah berat rangkaian baja tersebut?",
         "notes": "",
         "attachment": "<table class='table'><thead><tr><th>Diameter (mm)</th><th>Berat (kg/m)</th></thead><tbody><tr><td>10</td><td>0.617</td></tr><tr><td>13</td><td>1.040</td></tr><tr><td>16</td><td>1.580</td></tr><tr><td>22</td><td>2.980</td></tr><tr><td>25</td><td>3.850</td></tr><tr><td>29</td><td>5.180</td></tr><tr><td>32</td><td>6.310</td></tr><tr><td>36</td><td>7.990</td></tr><tr><td>40</td><td>9.880</td></tr></tbody></table>",
-        "type": "civil"
-    },
-    {
-        "id": "5n9ohdomlonjo62uswvokuj4",
-        "question": "Sebutkan 2 tipe pondasi beserta contohnya.",
-        "notes": "",
-        "attachment": null,
         "type": "civil"
     },
     {
@@ -42,13 +28,6 @@
         "type": "civil"
     },
     {
-        "id": "fbgxht12rken97ksp9ajpp1m",
-        "question": "Sebuah rangkaian besi penampang lingkaran berdiameter 400 mm dan selimut beton 30 mm memiliki konfigurasi 6D16 dengan sengkang ø13-100 panjang 12 meter. Berapakah berat rangkaian baja tersebut?",
-        "notes": "",
-        "attachment": "<table class='table'><thead><tr><th>Diameter (mm)</th><th>Berat (kg/m)</th></thead><tbody><tr><td>10</td><td>0.617</td></tr><tr><td>13</td><td>1.040</td></tr><tr><td>16</td><td>1.580</td></tr><tr><td>22</td><td>2.980</td></tr><tr><td>25</td><td>3.850</td></tr><tr><td>29</td><td>5.180</td></tr><tr><td>32</td><td>6.310</td></tr><tr><td>36</td><td>7.990</td></tr><tr><td>40</td><td>9.880</td></tr></tbody></table>",
-        "type": "civil"
-    },
-    {
         "id": "prgvhlawkbjpwrmihrliahyz",
         "question": "Bila muka tanah berada di elevasi +7.426 meter dan akan digali hingga elevasi -2.347 meter, berapakah tebal galian yang perlu dilakukan?",
         "notes": "",
@@ -63,20 +42,6 @@
         "type": "civil"
     },
     {
-        "id": "ijycykrmovc1wi7oafmgspfv",
-        "question": "Sebutkan jarak terdekat antara vektor 2 dimensi (-3,+7) dan (+6,+1)",
-        "notes": "",
-        "attachment": null,
-        "type": "civil"
-    },
-    {
-        "id": "q2ad42uhz6vv6u76afpirw97",
-        "question": "Mengapa perkerasan di lahan parkir menggunakan beton dan bukan aspal?",
-        "notes": "",
-        "attachment": null,
-        "type": "civil"
-    },
-    {
         "id": "fg2k540ak85zekwi4pbzglzx",
         "question": "Beton dan besi merupakan material utama dari sebuah struktur. Apakah peran tahanan masing-masing dari besi dan beton dalam struktur?",
         "notes": "",
@@ -85,38 +50,10 @@
     },
     {
         "id": "0y95i2ubenw00khwhzxmq2ew",
-        "question": "Sebagai seorang site supervisor, jelaskan langkah-langkah persiapan dan bekerja anda secara sistematis saat ditugaskan di suatu proyek.",
+        "question": "Sebagai seorang field supervisor, jelaskan langkah-langkah persiapan dan bekerja anda secara sistematis saat ditugaskan di suatu proyek.",
         "notes": "",
         "attachment": null,
         "type": "civil"
-    },
-    {
-        "id": "dq6mpkog5r0ikvic9se62zlv",
-        "question": "Jelaskan apa yang dimaksud dengan fondasi dalam.",
-        "notes": "",
-        "attachment": null,
-        "type": "geo"
-    },
-    {
-        "id": "725yprwtvq50e31w34pced9i",
-        "question": "Jelaskan apa yang dimaksud dengan SPT (Standard Penetration Test) dan apa implementasinya dalam konstruksi tiang bor?",
-        "notes": "",
-        "attachment": null,
-        "type": "geo"
-    },
-    {
-        "id": "v2wlgguqnwi172w0irwbiivb",
-        "question": "Sebutkan perbedaan antara floating pile dan end-bearing pile.",
-        "notes": "",
-        "attachment": null,
-        "type": "geo"
-    },
-    {
-        "id": "cw8hqajf00ltn3l3v5xlwvxf",
-        "question": "Sebutkan 2 jenis tanah dalam sudut pandang geoteknik serta implikasi dari perbedaan jenis-jenis tanah tersebut dalam konstruksi geoteknik.",
-        "notes": "",
-        "attachment": null,
-        "type": "geo"
     },
     {
         "id": "ii0089d5mx1jo34tx4efm5gw",
@@ -128,13 +65,6 @@
     {
         "id": "wzdm92dpn8c4bmaleyi4cemz",
         "question": "Sebutkan dan jelaskan tugas dari sebuah excavator  dalam pelaksanaan konstruksi tiang bor dan jelaskan juga pengaturan yang harus dilakukan agar dapat bekerja dengan efektif.",
-        "notes": "",
-        "attachment": null,
-        "type": "geo"
-    },
-    {
-        "id": "sjkx9mhgy26q7bspa4dtdxxv",
-        "question": "Jelaskan apa yang dimaksud dengan nilai kohesi (c) dan sudut geser tanah (ø) serta implikasinya terhadap konstruksi tiang bor.",
         "notes": "",
         "attachment": null,
         "type": "geo"
@@ -159,12 +89,5 @@
         "notes": "",
         "attachment": null,
         "type": "geo"
-    },
-    {
-        "id": "p6pplzdiqlp4z0di6yv6vwk7",
-        "question": "Gambarkan denah tiang bor termasuk penomoran tiang dan detail tiang bor dengan ketentuan 10 pile cap berisi 4 tiang bor sejarak 2.5xDiameter. Diketahui ukuran lahan pekerjaan adalah 5 x 20 m2. Muka tanah asli @1.000.Tebal pile cap 600 mm dengan panjang efektif tiang bor 12.000 mm. Diameter tiang bor 600 mm dengan konfigurasi besi 8D16, D13-150. Kode tiang selalu diawali dengan BP.",
-        "notes": "Mohon dikerjakan dengan menggunakan software AutoCAD. File maximum yang dapat dikirimkan adalah sebesar 5 MB.",
-        "attachment": null,
-        "type": "drawing"
     }
 ]

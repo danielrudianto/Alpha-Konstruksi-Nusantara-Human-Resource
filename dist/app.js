@@ -10,6 +10,8 @@ const cors_1 = __importDefault(require("cors"));
 const token_routes_1 = __importDefault(require("./routes/token.routes"));
 const curriculum_routes_1 = __importDefault(require("./routes/curriculum.routes"));
 const test_routes_1 = __importDefault(require("./routes/test.routes"));
+const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
+const result_routes_1 = __importDefault(require("./routes/result.routes"));
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
 const corsOptions = {
@@ -23,6 +25,8 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/token", token_routes_1.default);
 app.use("/curriculum", curriculum_routes_1.default);
 app.use("/test", test_routes_1.default);
+app.use("/auth", auth_routes_1.default);
+app.use("/result", result_routes_1.default);
 app.listen(5000, () => {
     console.log("Server is running on port 5000.");
     (0, mongoose_1.connect)("mongodb://localhost:27017/alpha", {}).then(() => {

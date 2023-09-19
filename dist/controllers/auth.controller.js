@@ -1,0 +1,47 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const bcrypt_1 = require("bcrypt");
+const jsonwebtoken_1 = require("jsonwebtoken");
+const user_model_1 = __importDefault(require("../models/user.model"));
+class AuthController {
+}
+AuthController.login = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    user_model_1.default
+        .findOne({
+        username: username,
+    })
+        .then((user) => {
+        if (!user) {
+            return res.status(401).send({
+                message: "User not found",
+            });
+        }
+        console.log((0, bcrypt_1.hashSync)(password, 12));
+        (0, bcrypt_1.compare)(password, user.password).then((value) => {
+            if (value) {
+                const token = (0, jsonwebtoken_1.sign)({
+                    id: user._id,
+                    name: user.name,
+                    username: user.username,
+                }, process.env.JWT_ADMINISTRATOR_SECRET, {
+                    expiresIn: "7d",
+                });
+                return res.status(201).send({
+                    token: token,
+                    name: user.name,
+                });
+            }
+            else {
+                return res.status(401).send({
+                    message: "Wrong password",
+                });
+            }
+        });
+    });
+};
+exports.default = AuthController;

@@ -36,6 +36,15 @@ const TestSchema = new mongoose_1.Schema({
         type: [FileTestSchema],
         default: [],
     },
+    score: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
+    checkedAt: {
+        type: Date,
+        default: null,
+    },
 });
 const TestModel = (0, mongoose_1.model)("tests", TestSchema);
 exports.default = TestModel;

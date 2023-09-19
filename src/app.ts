@@ -6,6 +6,8 @@ import cors from "cors";
 import tokenRoutes from "./routes/token.routes";
 import curriculumRoutes from "./routes/curriculum.routes";
 import testRoutes from "./routes/test.routes";
+import authRoutes from "./routes/auth.routes";
+import resultRoutes from "./routes/result.routes";
 
 config();
 
@@ -25,6 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/token", tokenRoutes);
 app.use("/curriculum", curriculumRoutes);
 app.use("/test", testRoutes);
+app.use("/auth", authRoutes);
+app.use("/result", resultRoutes);
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000.");

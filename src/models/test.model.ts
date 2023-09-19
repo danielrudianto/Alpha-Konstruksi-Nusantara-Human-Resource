@@ -36,6 +36,15 @@ const TestSchema = new Schema({
     type: [FileTestSchema],
     default: [],
   },
+  score: {
+    type: Number,
+    default: 0,
+    required: true,
+  },
+  checkedAt: {
+    type: Date,
+    default: null,
+  },
 });
 
 const TestModel = model("tests", TestSchema);

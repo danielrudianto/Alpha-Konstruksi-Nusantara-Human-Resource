@@ -52,6 +52,29 @@ class AuthorizationMiddleware {
       next();
     });
   };
+
+  static interceptAdministrator = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const authorization = req.headers["authorization"]?.toString() || "";
+    if (!authorization) {
+      return res.status(401).send({
+        message: "Token not found.",
+      });
+    }
+
+    const jwtToken = authorization.split(" ")[1];
+    if (!jwtToken) {
+      return res.status(401).send({
+        message: "Token not found.",
+      });
+    }
+
+    const payload = decode(jwtToken);
+    console.log(payload);
+  };
 }
 
 export default AuthorizationMiddleware;
