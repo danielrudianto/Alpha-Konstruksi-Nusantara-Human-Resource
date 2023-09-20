@@ -263,7 +263,8 @@ ResultController.fetchByToken = (req, res) => {
     const token = req.params.token;
     token_model_1.default.findOne({
         token: token,
-    }).then((result) => __awaiter(void 0, void 0, void 0, function* () {
+    })
+        .then((result) => __awaiter(void 0, void 0, void 0, function* () {
         if (!result) {
             return res.status(404).send({
                 message: "Token not found.",
@@ -296,7 +297,13 @@ ResultController.fetchByToken = (req, res) => {
             curriculum: curriculum,
             data: response,
         });
-    }));
+    }))
+        .catch((error) => {
+        console.error(`[error]: Error on fetch by token. ${error}`);
+        return res.status(500).send({
+            message: "Internal Server Error",
+        });
+    });
 };
 ResultController.updateScore = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const score = req.body.score;

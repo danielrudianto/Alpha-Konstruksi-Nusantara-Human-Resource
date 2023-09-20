@@ -277,45 +277,52 @@ class ResultController {
     const token = req.params.token;
     TokenModel.findOne({
       token: token,
-    }).then(async (result) => {
-      if (!result) {
-        return res.status(404).send({
-          message: "Token not found.",
-        });
-      }
+    })
+      .then(async (result) => {
+        if (!result) {
+          return res.status(404).send({
+            message: "Token not found.",
+          });
+        }
 
-      const tests = await TestModel.find({
-        token: token,
-      });
-
-      const curriculum = await CurriculumModel.findOne({
-        token: token,
-      });
-
-      const response: any[] = [];
-      const testSet = require(`../data/tests/${result.testName}.json`);
-      testSet.forEach((question: any) => {
-        const answerIndex = tests.findIndex((x: any) => {
-          return x.questionID == question.id;
+        const tests = await TestModel.find({
+          token: token,
         });
 
-        response.push({
-          id: question.id,
-          answer:
-            answerIndex == -1
-              ? ""
-              : tests[answerIndex].answer?.replace(/(?:\r\n|\r|\n)/g, "<br>"),
-          files: (answerIndex == -1 ? [] : tests[answerIndex].files) || [],
-          question: question.question,
-          score: answerIndex == -1 ? 0 : tests[answerIndex].score,
+        const curriculum = await CurriculumModel.findOne({
+          token: token,
+        });
+
+        const response: any[] = [];
+        const testSet = require(`../data/tests/${result.testName}.json`);
+        testSet.forEach((question: any) => {
+          const answerIndex = tests.findIndex((x: any) => {
+            return x.questionID == question.id;
+          });
+
+          response.push({
+            id: question.id,
+            answer:
+              answerIndex == -1
+                ? ""
+                : tests[answerIndex].answer?.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+            files: (answerIndex == -1 ? [] : tests[answerIndex].files) || [],
+            question: question.question,
+            score: answerIndex == -1 ? 0 : tests[answerIndex].score,
+          });
+        });
+
+        return res.status(200).send({
+          curriculum: curriculum,
+          data: response,
+        });
+      })
+      .catch((error) => {
+        console.error(`[error]: Error on fetch by token. ${error}`);
+        return res.status(500).send({
+          message: "Internal Server Error",
         });
       });
-
-      return res.status(200).send({
-        curriculum: curriculum,
-        data: response,
-      });
-    });
   };
 
   static updateScore = async (req: Request, res: Response) => {
