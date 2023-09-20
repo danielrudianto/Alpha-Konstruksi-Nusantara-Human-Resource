@@ -19,8 +19,6 @@ class AuthController {
           });
         }
 
-        console.log(hashSync(password, 12));
-
         compare(password, user.password).then((value) => {
           if (value) {
             const token = sign(

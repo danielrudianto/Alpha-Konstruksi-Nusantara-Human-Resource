@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { decode } from "jsonwebtoken";
+import { decode, JwtPayload, verify } from "jsonwebtoken";
 import TokenModel from "../models/token.model";
 
 class AuthorizationMiddleware {
@@ -72,8 +72,21 @@ class AuthorizationMiddleware {
       });
     }
 
-    const payload = decode(jwtToken);
-    console.log(payload);
+    verify(
+      jwtToken,
+      process.env.JWT_ADMINISTRATOR_SECRET!,
+      (error, decoded) => {
+        if (error) {
+          return res.status(401).send({
+            message: "Token not verified.",
+          });
+        }
+
+        const payload = decode(jwtToken) as JwtPayload;
+        req.body.meta__userID = payload!.id;
+        next();
+      }
+    );
   };
 }
 

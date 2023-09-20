@@ -186,4 +186,106 @@ TestController.end = (req, res) => {
         return res.status(500).send(error);
     });
 };
+TestController.check = (req, res) => {
+    const token = req.body.token;
+    token_model_1.default.findOne({
+        token: token,
+    }).then((result) => {
+        if (!result) {
+            return res.status(404).send({
+                message: "Token not found.",
+            });
+        }
+        result.status.push({
+            status: "checked",
+            date: new Date(),
+        });
+        result.currentStatus = "checked";
+        result
+            .save()
+            .then(() => {
+            return res.status(201).send(result);
+        })
+            .catch((error) => {
+            console.error(`[error]: Error while saving token: ${error}`);
+            return res.status(500).send({
+                message: "Internal Server Error",
+            });
+        });
+    });
+};
+TestController.interview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = req.body.token;
+    const tokenResult = yield token_model_1.default.findOne({
+        token: token,
+    });
+    if (!tokenResult) {
+        return res.status(404).send({
+            message: "Token not found.",
+        });
+    }
+    if (tokenResult.currentStatus == "interview") {
+        return res.status(400).send({
+            message: "Token already interviewed.",
+        });
+    }
+    if (tokenResult.currentStatus != "checked") {
+        return res.status(400).send({
+            message: "Token not checked.",
+        });
+    }
+    tokenResult.status.push({
+        status: "interview",
+        date: new Date(),
+    });
+    tokenResult.currentStatus = "interview";
+    tokenResult
+        .save()
+        .then((result) => {
+        return res.status(201).send(result);
+    })
+        .catch((error) => {
+        console.error(`[error]: Error on updating token: ${error}`);
+        return res.status(500).send({
+            message: "Internal Server Error",
+        });
+    });
+});
+TestController.failed = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const token = req.body.token;
+    const tokenResult = yield token_model_1.default.findOne({
+        token: token,
+    });
+    if (!tokenResult) {
+        return res.status(404).send({
+            message: "Token not found.",
+        });
+    }
+    if (tokenResult.currentStatus == "failed") {
+        return res.status(400).send({
+            message: "Token already interviewed.",
+        });
+    }
+    if (tokenResult.currentStatus != "checked") {
+        return res.status(400).send({
+            message: "Token not checked.",
+        });
+    }
+    tokenResult.status.push({
+        status: "failed",
+        date: new Date(),
+    });
+    tokenResult.currentStatus = "failed";
+    tokenResult
+        .save()
+        .then((result) => {
+        return res.status(201).send(result);
+    })
+        .catch((error) => {
+        console.error(`[error]: Error on updating token: ${error}`);
+        return res.status(500).send({
+            message: "Internal Server Error",
+        });
+    });
+});
 exports.default = TestController;

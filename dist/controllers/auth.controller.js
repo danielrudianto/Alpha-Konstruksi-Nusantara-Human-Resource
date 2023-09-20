@@ -21,7 +21,6 @@ AuthController.login = (req, res) => {
                 message: "User not found",
             });
         }
-        console.log((0, bcrypt_1.hashSync)(password, 12));
         (0, bcrypt_1.compare)(password, user.password).then((value) => {
             if (value) {
                 const token = (0, jsonwebtoken_1.sign)({

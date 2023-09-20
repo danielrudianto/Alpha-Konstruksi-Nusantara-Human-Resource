@@ -65,7 +65,15 @@ AuthorizationMiddleware.interceptAdministrator = (req, res, next) => {
             message: "Token not found.",
         });
     }
-    const payload = (0, jsonwebtoken_1.decode)(jwtToken);
-    console.log(payload);
+    (0, jsonwebtoken_1.verify)(jwtToken, process.env.JWT_ADMINISTRATOR_SECRET, (error, decoded) => {
+        if (error) {
+            return res.status(401).send({
+                message: "Token not verified.",
+            });
+        }
+        const payload = (0, jsonwebtoken_1.decode)(jwtToken);
+        req.body.meta__userID = payload.id;
+        next();
+    });
 };
 exports.default = AuthorizationMiddleware;

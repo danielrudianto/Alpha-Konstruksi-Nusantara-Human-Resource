@@ -8,6 +8,7 @@ import curriculumRoutes from "./routes/curriculum.routes";
 import testRoutes from "./routes/test.routes";
 import authRoutes from "./routes/auth.routes";
 import resultRoutes from "./routes/result.routes";
+import ResultController from "./controllers/result.controller";
 
 config();
 
