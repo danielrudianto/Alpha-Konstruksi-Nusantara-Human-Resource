@@ -41,6 +41,12 @@ AuthController.login = (req, res) => {
                 });
             }
         });
+    })
+        .catch((error) => {
+        console.error(`[error]: Error on login: ${error}`);
+        return res.status(500).send({
+            message: "Internal Server Error",
+        });
     });
 };
 exports.default = AuthController;
