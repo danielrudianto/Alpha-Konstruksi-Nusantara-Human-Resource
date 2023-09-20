@@ -19,30 +19,37 @@ class AuthController {
           });
         }
 
-        compare(password, user.password).then((value) => {
-          if (value) {
-            const token = sign(
-              {
-                id: user._id,
-                name: user.name,
-                username: user.username,
-              },
-              process.env.JWT_ADMINISTRATOR_SECRET!,
-              {
-                expiresIn: "7d",
-              }
-            );
+        compare(password, user.password)
+          .then((value) => {
+            if (value) {
+              const token = sign(
+                {
+                  id: user._id,
+                  name: user.name,
+                  username: user.username,
+                },
+                process.env.JWT_ADMINISTRATOR_SECRET!,
+                {
+                  expiresIn: "7d",
+                }
+              );
 
-            return res.status(201).send({
-              token: token,
-              name: user.name,
+              return res.status(201).send({
+                token: token,
+                name: user.name,
+              });
+            } else {
+              return res.status(401).send({
+                message: "Wrong password",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error(`[error]: Error on login: ${error}`);
+            return res.status(500).send({
+              message: "Internal Server Error",
             });
-          } else {
-            return res.status(401).send({
-              message: "Wrong password",
-            });
-          }
-        });
+          });
       })
       .catch((error) => {
         console.error(`[error]: Error on login: ${error}`);

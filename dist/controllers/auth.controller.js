@@ -21,7 +21,8 @@ AuthController.login = (req, res) => {
                 message: "User not found",
             });
         }
-        (0, bcrypt_1.compare)(password, user.password).then((value) => {
+        (0, bcrypt_1.compare)(password, user.password)
+            .then((value) => {
             if (value) {
                 const token = (0, jsonwebtoken_1.sign)({
                     id: user._id,
@@ -40,6 +41,12 @@ AuthController.login = (req, res) => {
                     message: "Wrong password",
                 });
             }
+        })
+            .catch((error) => {
+            console.error(`[error]: Error on login: ${error}`);
+            return res.status(500).send({
+                message: "Internal Server Error",
+            });
         });
     })
         .catch((error) => {
