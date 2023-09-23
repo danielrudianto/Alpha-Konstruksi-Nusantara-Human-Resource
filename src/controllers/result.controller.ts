@@ -309,6 +309,10 @@ class ResultController {
             files: (answerIndex == -1 ? [] : tests[answerIndex].files) || [],
             question: question.question,
             score: answerIndex == -1 ? 0 : tests[answerIndex].score,
+            submittedAt:
+              answerIndex == -1
+                ? null
+                : new Date(tests[answerIndex].submittedAt),
           });
         });
 
