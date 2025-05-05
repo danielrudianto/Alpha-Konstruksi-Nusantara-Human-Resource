@@ -77,6 +77,7 @@ class AuthorizationMiddleware {
       process.env.JWT_ADMINISTRATOR_SECRET!,
       (error, decoded) => {
         if (error) {
+          console.error(`[error]: Error while verifying token: ${error}`);
           return res.status(401).send({
             message: "Token not verified.",
           });

@@ -4,8 +4,8 @@ import AuthorizationMiddleware from "../utils/authorization.middleware";
 
 const router = Router();
 
-router.get("/", AuthorizationMiddleware.intercept, TestController.fetch);
-router.post("/end", AuthorizationMiddleware.intercept, TestController.end);
+router.get("/", AuthorizationMiddleware.intercept, TestController.fetchByToken);
+router.post("/end", AuthorizationMiddleware.intercept, TestController.endByToken);
 router.post("/files", AuthorizationMiddleware.intercept, TestController.files);
 router.post(
   "/check",

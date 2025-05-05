@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-const test_model_1 = __importDefault(require("../models/test.model"));
+const response_model_1 = __importDefault(require("../models/response.model"));
 const token_model_1 = __importDefault(require("../models/token.model"));
 class TestController {
 }
@@ -23,13 +23,13 @@ TestController.answer = (req, res) => {
     const answer = req.body.answer;
     const files = req.body.files || [];
     const token = req.body.token;
-    test_model_1.default.findOne({
+    response_model_1.default.findOne({
         token: token,
         questionID: questionID,
     })
         .then((result) => __awaiter(void 0, void 0, void 0, function* () {
         if (!result) {
-            yield test_model_1.default.create({
+            yield response_model_1.default.create({
                 questionID: questionID,
                 answer: answer,
                 token: token,
@@ -71,13 +71,13 @@ TestController.files = (req, res) => {
     const questionID = req.body.questionID;
     const files = req.body.files;
     const token = req.body.token;
-    test_model_1.default.findOne({
+    response_model_1.default.findOne({
         token: token,
         questionID: questionID,
     })
         .then((result) => __awaiter(void 0, void 0, void 0, function* () {
         if (!result) {
-            const createdTest = yield test_model_1.default.create({
+            const createdTest = yield response_model_1.default.create({
                 questionID: questionID,
                 files: files.map((x) => {
                     return {
@@ -113,7 +113,7 @@ TestController.files = (req, res) => {
         return res.status(500).send(error);
     });
 };
-TestController.fetch = (req, res) => {
+TestController.fetchByToken = (req, res) => {
     const token = req.body.token;
     token_model_1.default.findOne({
         token: token,
@@ -141,7 +141,7 @@ TestController.fetch = (req, res) => {
         const testFile = result.testName;
         // Read from file
         const test = require(`../data/tests/${testFile}.json`);
-        test_model_1.default.find({
+        response_model_1.default.find({
             token: token,
         }).then((answers) => {
             return res.status(200).send({
@@ -163,7 +163,7 @@ TestController.fetch = (req, res) => {
         });
     });
 };
-TestController.end = (req, res) => {
+TestController.endByToken = (req, res) => {
     const token = req.body.token;
     token_model_1.default.findOne({
         token: token,
@@ -288,4 +288,8 @@ TestController.failed = (req, res) => __awaiter(void 0, void 0, void 0, function
         });
     });
 });
+TestController.fetch = (req, res) => {
+    const page = !req.query.page ? 1 : parseInt(req.query.page);
+    const keyword = !req.query.keyword ? "" : req.query.keyword;
+};
 exports.default = TestController;

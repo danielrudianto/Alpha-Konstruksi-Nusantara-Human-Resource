@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const curriculum_model_1 = __importDefault(require("../models/curriculum.model"));
-const test_model_1 = __importDefault(require("../models/test.model"));
+const response_model_1 = __importDefault(require("../models/response.model"));
 const token_model_1 = __importDefault(require("../models/token.model"));
 class ResultController {
 }
@@ -34,7 +34,7 @@ ResultController.fetch = (req, res) => __awaiter(void 0, void 0, void 0, functio
                     $in: tokens.map((x) => x.token),
                 },
             });
-            const result = yield test_model_1.default.aggregate([
+            const result = yield response_model_1.default.aggregate([
                 {
                     $match: {
                         token: {
@@ -84,7 +84,7 @@ ResultController.fetch = (req, res) => __awaiter(void 0, void 0, void 0, functio
                     $in: uncheckedTokens.map((x) => x.token),
                 },
             });
-            const uncheckedResult = yield test_model_1.default.aggregate([
+            const uncheckedResult = yield response_model_1.default.aggregate([
                 {
                     $match: {
                         token: {
@@ -128,7 +128,7 @@ ResultController.fetch = (req, res) => __awaiter(void 0, void 0, void 0, functio
                     $in: interviewTokens.map((x) => x.token),
                 },
             });
-            const interviewResult = yield test_model_1.default.aggregate([
+            const interviewResult = yield response_model_1.default.aggregate([
                 {
                     $match: {
                         token: {
@@ -172,7 +172,7 @@ ResultController.fetch = (req, res) => __awaiter(void 0, void 0, void 0, functio
                     $in: failedTokens.map((x) => x.token),
                 },
             });
-            const failedResult = yield test_model_1.default.aggregate([
+            const failedResult = yield response_model_1.default.aggregate([
                 {
                     $match: {
                         token: {
@@ -224,7 +224,7 @@ ResultController.fetch = (req, res) => __awaiter(void 0, void 0, void 0, functio
                     $in: allTokens.map((x) => x.token),
                 },
             });
-            const allResult = yield test_model_1.default.aggregate([
+            const allResult = yield response_model_1.default.aggregate([
                 {
                     $match: {
                         token: {
@@ -270,7 +270,7 @@ ResultController.fetchByToken = (req, res) => {
                 message: "Token not found.",
             });
         }
-        const tests = yield test_model_1.default.find({
+        const tests = yield response_model_1.default.find({
             token: token,
         });
         const curriculum = yield curriculum_model_1.default.findOne({
@@ -291,6 +291,9 @@ ResultController.fetchByToken = (req, res) => {
                 files: (answerIndex == -1 ? [] : tests[answerIndex].files) || [],
                 question: question.question,
                 score: answerIndex == -1 ? 0 : tests[answerIndex].score,
+                submittedAt: answerIndex == -1
+                    ? null
+                    : new Date(tests[answerIndex].submittedAt),
             });
         });
         return res.status(200).send({
@@ -309,12 +312,12 @@ ResultController.updateScore = (req, res) => __awaiter(void 0, void 0, void 0, f
     const score = req.body.score;
     const token = req.body.token;
     const id = req.body.id;
-    const test = yield test_model_1.default.findOne({
+    const test = yield response_model_1.default.findOne({
         token: token,
         questionID: id,
     });
     if (!test) {
-        test_model_1.default.create({
+        response_model_1.default.create({
             token: token,
             questionID: id,
             score: score,

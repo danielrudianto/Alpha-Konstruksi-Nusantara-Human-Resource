@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import CurriculumModel from "../models/curriculum.model";
-import TestModel from "../models/test.model";
+import TestModel from "../models/response.model";
 import TokenModel from "../models/token.model";
 
 class ResultController {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import TestModel from "../models/test.model";
+import TestModel from "../models/response.model";
 import TokenModel from "../models/token.model";
 
 interface uploadFile {
@@ -109,7 +109,7 @@ class TestController {
       });
   };
 
-  static fetch = (req: Request, res: Response) => {
+  static fetchByToken = (req: Request, res: Response) => {
     const token = req.body.token;
     TokenModel.findOne({
       token: token,
@@ -165,7 +165,7 @@ class TestController {
     });
   };
 
-  static end = (req: Request, res: Response) => {
+  static endByToken = (req: Request, res: Response) => {
     const token = req.body.token;
     TokenModel.findOne({
       token: token,
@@ -310,6 +310,11 @@ class TestController {
           message: "Internal Server Error",
         });
       });
+  };
+
+  static fetch = (req: Request, res: Response) => {
+    const page = !req.query.page ? 1 : parseInt(req.query.page as string);
+    const keyword = !req.query.keyword ? "" : req.query.keyword;
   };
 }
 
