@@ -1,0 +1,100 @@
+[
+    {
+        "id": "BmvtikYCbkJjgE94iYG5p2vQ",
+        "question": "Jelaskan peran kontraktor dalam sebuah proyek konstruksi.",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "lc1tJcvKAXTYG2AXmY3Ev1Bv",
+        "question": "Mengapa mobil molen selalu berputar?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "lE2RZ88wgBfDHHentYpLcvK1",
+        "question": "Jelaskan apa yang dimaksud dengan setting time beton.",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "gzjLMEWl3vJwHpsPZzBYNSg3",
+        "question": "Bila muka tanah berada di elevasi +7.426 meter dan akan digali hingga elevasi -2.347 meter, berapakah tebal galian yang perlu dilakukan?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "vsUHjXjIIOe8ER2eVZLwdUg3",
+        "question": "Beton dan besi merupakan material utama dari sebuah struktur. Apakah peran tahanan masing-masing dari besi dan beton dalam struktur?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "H5vGqWvaPfIvxZcuMbgJtgDS",
+        "question": "Sebagai seorang engineer, jelaskan langkah-langkah persiapan dan bekerja anda secara sistematis saat ditugaskan di suatu proyek.",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "O6eWsL6z55AfZBapZvqibG0N",
+        "question": "Bagaimana Anda menangani ketidaksesuaian dengan spesifikasi desain di lapangan?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "0PBPPLFXhAEsolzL4pauPD0Z",
+        "question": "Bagaimana Anda menangani deviasi selama inspeksi?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "z8rsNEyW2FjCgEJtSEFwepzS",
+        "question": "Apa peran dari gambar as-built dalam serah terima?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "XYDQUv0oLU1LX62wYcz1p7d6",
+        "question": "Langkah apa yang Anda ambil untuk memverifikasi kualitas material yang diterima di lokasi?",
+        "notes": "",
+        "attachment": "",
+        "type": "civil"
+    },
+    {
+        "id": "lroqRAIlKLnlDi4XefQr1ho6",
+        "question": "Jelaskan perbedaan antara panjang efektif (effective length) dan panjang pengeboran (drilling length) dalam konteks konstruksi pengeboran.",
+        "notes": "",
+        "attachment": "",
+        "type": "geo"
+    },
+    {
+        "id": "sczDnseyO4bJDlJ0nl2pK3yL",
+        "question": "Secara sistematis, jelaskan proses pembuatan fondasi tiang bor.",
+        "notes": "",
+        "attachment": "",
+        "type": "geo"
+    },
+    {
+        "id": "Eelsmm52V77JnPGkyQGKO4Qf",
+        "question": "Apa yang dimaksud dengan tanah ekspansif? Apabila ditemukan keberadaan tanah ekspansif, bagaimana hal tersebut menjadi keuntungan / kerugian sebagai kontraktor geoteknik pada saat pelaksaan pekerjaan konstruksi tiang bor?",
+        "notes": "",
+        "attachment": "",
+        "type": "geo"
+    },
+    {
+        "id": "K34lWLFt0Jya7a5VaGmQqjkd",
+        "question": "Sebutkan dan jelaskan 2 jenis tanah yang paling sering ditemukan dalam konstruksi tiang bor.",
+        "notes": "",
+        "attachment": "",
+        "type": "geo"
+    }
+]
