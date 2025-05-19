@@ -23,11 +23,7 @@ const http_1 = __importDefault(require("http"));
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 // const io = new Server(server);
-app.use((0, cors_1.default)({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-}));
+app.use((0, cors_1.default)());
 app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/token", token_routes_1.default);
