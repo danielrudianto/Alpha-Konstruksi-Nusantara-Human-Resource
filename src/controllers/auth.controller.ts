@@ -8,6 +8,8 @@ class AuthController {
     const username = req.body.username;
     const password = req.body.password;
 
+    console.log(`[info]: Login attempt with username: ${username}`);
+
     userModel
       .findOne({
         username: username,
