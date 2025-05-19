@@ -15,6 +15,7 @@ const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const result_routes_1 = __importDefault(require("./routes/result.routes"));
 const opening_routes_1 = __importDefault(require("./routes/opening.routes"));
 const meet_routes_1 = __importDefault(require("./routes/meet.routes"));
+// import { Server } from "socket.io";
 const http_1 = __importDefault(require("http"));
 // import { ExpressPeerServer } from "peer";
 // import { RTCHandler } from "./utils/rtc.handler";
@@ -22,7 +23,11 @@ const http_1 = __importDefault(require("http"));
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 // const io = new Server(server);
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express_1.default.json({ limit: "10mb" }));
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/token", token_routes_1.default);

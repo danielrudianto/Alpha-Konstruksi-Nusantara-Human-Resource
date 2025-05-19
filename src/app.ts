@@ -12,7 +12,7 @@ import resultRoutes from "./routes/result.routes";
 import openingRoutes from "./routes/opening.routes";
 import meetRoutes from "./routes/meet.routes";
 
-import { Server } from "socket.io";
+// import { Server } from "socket.io";
 import http from "http";
 
 // import { ExpressPeerServer } from "peer";
@@ -25,7 +25,13 @@ const app = express();
 const server = http.createServer(app);
 // const io = new Server(server);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
