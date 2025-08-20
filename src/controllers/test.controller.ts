@@ -286,7 +286,10 @@ class TestController {
       });
     }
 
-    if (tokenResult.currentStatus != "checked") {
+    if (
+      tokenResult.currentStatus != "checked" &&
+      tokenResult.currentStatus != "interview"
+    ) {
       return res.status(400).send({
         message: "Token not checked.",
       });

@@ -266,7 +266,8 @@ TestController.failed = (req, res) => __awaiter(void 0, void 0, void 0, function
             message: "Token already interviewed.",
         });
     }
-    if (tokenResult.currentStatus != "checked") {
+    if (tokenResult.currentStatus != "checked" &&
+        tokenResult.currentStatus != "interview") {
         return res.status(400).send({
             message: "Token not checked.",
         });

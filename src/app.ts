@@ -6,11 +6,8 @@ import cors from "cors";
 import tokenRoutes from "./routes/token.routes";
 import curriculumRoutes from "./routes/curriculum.routes";
 import testRoutes from "./routes/test.routes";
-import administratorTestRoutes from "./routes/administrator-test.routes";
 import authRoutes from "./routes/auth.routes";
 import resultRoutes from "./routes/result.routes";
-import openingRoutes from "./routes/opening.routes";
-import meetRoutes from "./routes/meet.routes";
 
 import { Server } from "socket.io";
 import http from "http";
@@ -29,14 +26,12 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/auth", authRoutes);
+
 app.use("/token", tokenRoutes);
 app.use("/curriculum", curriculumRoutes);
-app.use("/administrator/test", administratorTestRoutes);
 app.use("/test", testRoutes);
-app.use("/auth", authRoutes);
 app.use("/result", resultRoutes);
-app.use("/opening", openingRoutes);
-app.use("/meet", meetRoutes);
 
 // app.use("/peerjs", ExpressPeerServer(server));
 
